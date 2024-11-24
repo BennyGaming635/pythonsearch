@@ -15,4 +15,5 @@ Coming soon! 👀
 
 ***
 ## Add links?
-Coming soon! 👀
+Just make an issue with links (full link please) and category names so I can add them.
+ 
