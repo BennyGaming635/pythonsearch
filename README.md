@@ -1,7 +1,7 @@
 # Python Search
 ***
 ## Find websites
-Find websites that are commonly used
+Find websites that are commonly used in a easy way.
 
 ## Secure
 Idk it pulls from github without accounts so secure? 👍
