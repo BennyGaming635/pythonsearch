@@ -1,5 +1,23 @@
 import webbrowser
-import requests
+import subprocess
+import sys
+
+# Function to check if the requests library is installed
+def check_and_install_requests():
+    try:
+        import requests
+    except ImportError:
+        print("The 'requests' library is not installed.")
+        install_choice = input("Would you like to install it now? (y/n): ").lower()
+        if install_choice == 'y':
+            print("Installing 'requests'...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "requests"])
+            print("'requests' has been installed. Please restart the script.")
+            sys.exit()
+        else:
+            print("Continuing without the 'requests' library. Limited functionality may be available.")
+            return False
+    return True
 
 # Base URL for raw files on GitHub
 GITHUB_RAW_URL = "https://raw.githubusercontent.com/BennyGaming635/pythonsearch/main/app/categories/"
@@ -20,10 +38,18 @@ def read_websites_from_file(category):
     url = f"{GITHUB_RAW_URL}{category}.txt"
     
     try:
+        import requests
         response = requests.get(url)
+        
+        # Debugging: Print the status code and response text
+        print(f"Status Code: {response.status_code}")
+        print(f"Response Text: {response.text[:200]}...")  # Print first 200 chars of the response for debugging
+        
         # Check if the request was successful
         if response.status_code == 200:
             websites = response.text.strip().splitlines()
+            if not websites:
+                print("Warning: No websites found in the file.")
             return websites
         else:
             print(f"Failed to fetch category {category}.txt. Status code: {response.status_code}")
@@ -42,6 +68,10 @@ def open_website(website_index, websites):
 
 # Main function
 def main():
+    # Check if requests library is installed
+    if not check_and_install_requests():
+        return
+
     while True:
         display_categories()
         
@@ -51,7 +81,18 @@ def main():
             print("Closing the app.")
             break
         elif category_choice in ['a', 'b', 'c', 'd', 'e']:
-            websites = read_websites_from_file(f"{category_choice}_search" if category_choice == 'a' else f"{category_choice}_productivity" if category_choice == 'b' else f"{category_choice}_hack_club" if category_choice == 'c' else f"{category_choice}_entertainment" if category_choice == 'd' else f"{category_choice}_gaming")
+            # Formulate category name, based on the user's choice
+            category_map = {
+                'a': 'a_search',
+                'b': 'b_productivity',
+                'c': 'c_hack_club',
+                'd': 'd_entertainment',
+                'e': 'e_gaming'
+            }
+            category_file = category_map[category_choice]
+            
+            websites = read_websites_from_file(category_file)
+            
             if websites:
                 print(f"\nList of websites for the {category_choice} category:")
                 for idx, website in enumerate(websites, start=1):
