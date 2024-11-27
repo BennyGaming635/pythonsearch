@@ -1,4 +1,5 @@
-https://www.google.com
-https://www.bing.com
-https://www.duckduckgo.com
-https://www.ecosia.com
+https://google.com
+https://bing.com
+https://duckduckgo.com
+https://yahoo.com
+https://ask.com

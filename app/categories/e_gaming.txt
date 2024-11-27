@@ -1,5 +1,7 @@
-https://www.steampowered.com
-https://www.ign.com
-https://www.pcgamer.com
-https://www.xbox.com
-https://www.playstation.com
+https://steamcommunity.com
+https://epicgames.com
+https://roblox.com
+https://itch.io
+https://kongregate.com
+https://xbox.com
+https://playstation.com

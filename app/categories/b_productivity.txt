@@ -1,5 +1,5 @@
-https://www.trello.com
-https://www.todoist.com
-https://www.notion.so
-https://www.office.com
-https://www.slack.com
+https://trello.com
+https://notion.so
+https://todoist.com
+https://evernote.com
+https://clickup.com
