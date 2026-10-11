@@ -1,0 +1,4 @@
+:focus-visible{outline:3px solid #e5af49;outline-offset:5px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.banner-slider *{transition:none!important}}
+/* Keep content readable even before scroll-triggered theme animations run. */
+#content .revealed{opacity:1;visibility:visible;animation:none}
